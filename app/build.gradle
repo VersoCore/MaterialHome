@@ -1,17 +1,27 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.jakewharton.hugo:hugo-plugin:1.1.0'
+    }
+}
 apply plugin: 'com.android.application'
+apply plugin: 'hugo'
 
 android {
     compileSdkVersion 20
     buildToolsVersion "20.0.0"
 
     defaultConfig {
-        applicationId "com.android.launcher3"
+        applicationId "com.kogitune.launcher3"
         minSdkVersion 16
         targetSdkVersion 20
     }
 
     lintOptions {
-          abortOnError false
+        abortOnError false
     }
 
     buildTypes {
@@ -23,6 +33,9 @@ android {
 }
 
 dependencies {
-    compile 'com.google.protobuf:protobuf-java:2.3.0'
+    compile 'com.google.protobuf:protobuf-java:+'
+    compile 'com.squareup.retrofit:retrofit-converters:+'
+
     compile 'com.android.support:support-v4:20.+'
 }
+
