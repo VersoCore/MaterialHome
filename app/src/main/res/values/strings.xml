@@ -294,4 +294,8 @@ s -->
     <string name="wallpaper_button_text">Wallpapers</string>
     <!-- Text for settings button -->
     <string name="settings_button_text">Settings</string>
+
+    <!-- develop -->
+
+    <string name="apps_develop_tab_label">AppsDevelop</string>
 </resources>

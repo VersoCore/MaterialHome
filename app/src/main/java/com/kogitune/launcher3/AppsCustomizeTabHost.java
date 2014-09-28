@@ -43,6 +43,7 @@ public class AppsCustomizeTabHost extends TabHost implements LauncherTransitiona
 
     private static final String APPS_TAB_TAG = "APPS";
     private static final String WIDGETS_TAB_TAG = "WIDGETS";
+    private static final String APPS_DEVELOP_TAB_TAG = "APPS_DEVELOP";
 
     private final LayoutInflater mLayoutInflater;
     private ViewGroup mTabs;
@@ -116,6 +117,11 @@ public class AppsCustomizeTabHost extends TabHost implements LauncherTransitiona
         // content filter on)
         TabContentFactory contentFactory = new TabContentFactory() {
             public View createTabContent(String tag) {
+                if (APPS_DEVELOP_TAB_TAG.equals(tag)){
+                    TextView textView = new TextView(getContext());
+                    textView.setText("this is stub!!!");
+                    return textView;
+                }
                 return appsCustomizePane;
             }
         };
@@ -128,12 +134,21 @@ public class AppsCustomizeTabHost extends TabHost implements LauncherTransitiona
         tabView.setText(label);
         tabView.setContentDescription(label);
         addTab(newTabSpec(APPS_TAB_TAG).setIndicator(tabView).setContent(contentFactory));
+
         label = getContext().getString(R.string.widgets_tab_label);
         tabView = (TextView) mLayoutInflater.inflate(R.layout.tab_widget_indicator, tabs, false);
         tabView.setText(label);
         tabView.setContentDescription(label);
         addTab(newTabSpec(WIDGETS_TAB_TAG).setIndicator(tabView).setContent(contentFactory));
         setOnTabChangedListener(this);
+
+        label = getContext().getString(R.string.apps_develop_tab_label);
+        tabView = (TextView) mLayoutInflater.inflate(R.layout.tab_widget_indicator, tabs, false);
+        tabView.setText(label);
+        tabView.setContentDescription(label);
+        addTab(newTabSpec(APPS_DEVELOP_TAB_TAG).setIndicator(tabView).setContent(contentFactory));
+        setOnTabChangedListener(this);
+
 
         // Setup the key listener to jump between the last tab view and the market icon
         AppsCustomizeTabKeyEventListener keyListener = new AppsCustomizeTabKeyEventListener();

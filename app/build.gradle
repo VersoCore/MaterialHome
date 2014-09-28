@@ -37,5 +37,6 @@ dependencies {
     compile 'com.squareup.retrofit:retrofit-converters:+'
 
     compile 'com.android.support:support-v4:20.+'
+    compile 'com.android.support:recyclerview-v7:+'
 }
 

@@ -31,7 +31,7 @@
             android:layout_height="@dimen/apps_customize_tab_bar_height"
             android:layout_marginTop="@dimen/apps_customize_tab_bar_margin_top"
             android:layout_gravity="center_horizontal"
-            android:visibility="gone">
+            >
             <com.kogitune.launcher3.FocusOnlyTabWidget
                 android:id="@android:id/tabs"
                 android:layout_width="match_parent"

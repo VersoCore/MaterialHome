@@ -18,6 +18,7 @@ package com.kogitune.launcher3;
 
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
+import android.annotation.TargetApi;
 import android.appwidget.AppWidgetHostView;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProviderInfo;
@@ -579,6 +580,7 @@ public class AppsCustomizePagedView extends PagedViewWithDraggableItems implemen
 
         mWidgetCleanupState = WIDGET_PRELOAD_PENDING;
         mBindWidgetRunnable = new Runnable() {
+            @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
             @Override
             public void run() {
                 mWidgetLoadingId = mLauncher.getAppWidgetHost().allocateAppWidgetId();

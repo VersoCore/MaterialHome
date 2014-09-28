@@ -51,6 +51,7 @@ class AppInfo extends ItemInfo {
 
     ComponentName componentName;
 
+
     static final int DOWNLOADED_FLAG = 1;
     static final int UPDATED_SYSTEM_APP_FLAG = 2;
 
