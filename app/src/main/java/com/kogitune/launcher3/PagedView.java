@@ -1735,7 +1735,7 @@ public abstract class PagedView extends ViewGroup implements ViewGroup.OnHierarc
                     mTouchX += deltaX;
                     mSmoothingTime = System.nanoTime() / NANOTIME_DIV;
                     if (!mDeferScrollUpdate) {
-                        scrollBy((int) deltaX, 0);
+                        scrollBy((int) deltaX * 2, 0);
                         if (DEBUG) Log.d(TAG, "onTouchEvent().Scrolling: " + deltaX);
                     } else {
                         invalidate();
