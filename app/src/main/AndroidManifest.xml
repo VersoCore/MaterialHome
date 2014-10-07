@@ -9,10 +9,14 @@
 	for the specific language governing permissions and ** limitations under 
 	the License. */ -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
 	package="com.kogitune.launcher3">
 
-	<uses-sdk android:minSdkVersion="17" android:targetSdkVersion="19"
+    <uses-sdk
+        tools:node="replace" />
+	<!--<uses-sdk android:minSdkVersion="17" android:targetSdkVersion="19"
 		android:maxSdkVersion="19" />
+		-->
 
 	<permission android:name="com.kogitune.launcher3.permission.PRELOAD_WORKSPACE"
 		android:permissionGroup="android.permission-group.SYSTEM_TOOLS"

@@ -73,6 +73,7 @@ class AppInfo extends ItemInfo {
         final String packageName = info.activityInfo.applicationInfo.packageName;
 
         this.componentName = new ComponentName(packageName, info.activityInfo.name);
+
         this.container = ItemInfo.NO_ID;
         this.setActivity(componentName,
                 Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
