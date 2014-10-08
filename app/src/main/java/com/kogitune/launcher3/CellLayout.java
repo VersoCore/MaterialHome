@@ -151,7 +151,7 @@ public class CellLayout extends ViewGroup {
     public static final int MODE_ON_DROP_EXTERNAL = 2;
     public static final int MODE_ACCEPT_DROP = 3;
     private static final boolean DESTRUCTIVE_REORDER = false;
-    private static final boolean DEBUG_VISUALIZE_OCCUPIED = false;
+    private static final boolean DEBUG_VISUALIZE_OCCUPIED = true;
 
     static final int LANDSCAPE = 0;
     static final int PORTRAIT = 1;
@@ -451,7 +451,7 @@ public class CellLayout extends ViewGroup {
 
         if (DEBUG_VISUALIZE_OCCUPIED) {
             int[] pt = new int[2];
-            ColorDrawable cd = new ColorDrawable(Color.RED);
+            ColorDrawable cd = new ColorDrawable(Color.argb(55,0,255,0));
             cd.setBounds(0, 0,  mCellWidth, mCellHeight);
             for (int i = 0; i < mCountX; i++) {
                 for (int j = 0; j < mCountY; j++) {

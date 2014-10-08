@@ -26,7 +26,7 @@ import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.graphics.Matrix;
+import android.graphics.Color;import android.graphics.Matrix;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -51,6 +51,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.Scroller;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -68,7 +69,7 @@ interface Page {
  */
 public abstract class PagedView extends ViewGroup implements ViewGroup.OnHierarchyChangeListener {
     private static final String TAG = "PagedView";
-    private static final boolean DEBUG = false;
+    protected static final boolean DEBUG = true;
     protected static final int INVALID_PAGE = -1;
 
     // the min drag distance for a fling to register, to prevent random page shifts
@@ -823,7 +824,7 @@ public abstract class PagedView extends ViewGroup implements ViewGroup.OnHierarc
         // unless they were set to WRAP_CONTENT
         if (DEBUG) Log.d(TAG, "PagedView.onMeasure(): " + widthSize + ", " + heightSize);
         if (DEBUG) Log.d(TAG, "PagedView.scaledSize: " + scaledWidthSize + ", " + scaledHeightSize);
-        if (DEBUG) Log.d(TAG, "PagedView.parentSize: " + parentWidthSize + ", " + parentHeightSize);
+        //if (DEBUG) Log.d(TAG, "PagedView.parentSize: " + parentWidthSize + ", " + parentHeightSize);
         if (DEBUG) Log.d(TAG, "PagedView.horizontalPadding: " + horizontalPadding);
         if (DEBUG) Log.d(TAG, "PagedView.verticalPadding: " + verticalPadding);
         final int childCount = getChildCount();
@@ -1184,6 +1185,7 @@ public abstract class PagedView extends ViewGroup implements ViewGroup.OnHierarc
                     if (v == mDragView) continue;
                     if (mForceDrawAllChildrenNextFrame ||
                                (leftScreen <= i && i <= rightScreen && shouldDrawChild(v))) {
+                        v.setBackgroundColor(Color.argb(55,255,0,0));
                         drawChild(canvas, v, drawingTime);
                     }
                 }
