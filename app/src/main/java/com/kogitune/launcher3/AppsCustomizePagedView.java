@@ -1373,6 +1373,8 @@ public class AppsCustomizePagedView extends PagedViewWithDraggableItems implemen
                     translationX = minScrollProgress * v.getMeasuredWidth();
                     interpolatedProgress = mZInterpolator.getInterpolation(Math.abs(minScrollProgress));
                 }
+                interpolatedProgress = 0;
+
                 float scale = (1 - interpolatedProgress) +
                         interpolatedProgress * TRANSITION_SCALE_FACTOR;
 
@@ -1398,7 +1400,7 @@ public class AppsCustomizePagedView extends PagedViewWithDraggableItems implemen
                     if (i == 0 && isOverscrollingFirstPage) {
                         // Overscroll to the left
                         v.setPivotX(xPivot * pageWidth);
-                        v.setRotationY(-TRANSITION_MAX_ROTATION * scrollProgress);
+                        v.setRotationY(-TRANSITION_MAX_ROTATION * 2 * scrollProgress);
                         scale = 1.0f;
                         alpha = 1.0f;
                         // On the first page, we don't want the page to have any lateral motion
@@ -1406,7 +1408,7 @@ public class AppsCustomizePagedView extends PagedViewWithDraggableItems implemen
                     } else if (i == getChildCount() - 1 && isOverscrollingLastPage) {
                         // Overscroll to the right
                         v.setPivotX((1 - xPivot) * pageWidth);
-                        v.setRotationY(-TRANSITION_MAX_ROTATION * scrollProgress);
+                        v.setRotationY(-TRANSITION_MAX_ROTATION * 2 * scrollProgress);
                         scale = 1.0f;
                         alpha = 1.0f;
                         // On the last page, we don't want the page to have any lateral motion.
