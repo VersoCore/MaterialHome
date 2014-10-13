@@ -1373,7 +1373,6 @@ public class AppsCustomizePagedView extends PagedViewWithDraggableItems implemen
                     translationX = minScrollProgress * v.getMeasuredWidth();
                     interpolatedProgress = mZInterpolator.getInterpolation(Math.abs(minScrollProgress));
                 }
-                interpolatedProgress = 0;
 
                 float scale = (1 - interpolatedProgress) +
                         interpolatedProgress * TRANSITION_SCALE_FACTOR;
