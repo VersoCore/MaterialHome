@@ -16,8 +16,15 @@
 
 package com.kogitune.launcher3;
 
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.appwidget.AppWidgetHostView;
 import android.content.Context;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.MessageQueue;
+import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,10 +33,14 @@ import android.widget.RemoteViews;
 
 import com.kogitune.launcher3.DragLayer.TouchCompleteListener;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
 /**
  * {@inheritDoc}
  */
 public class LauncherAppWidgetHostView extends AppWidgetHostView implements TouchCompleteListener {
+    private static final boolean EXPERIMENTAL = false;
     private CheckLongPressHelper mLongPressHelper;
     private LayoutInflater mInflater;
     private Context mContext;
@@ -51,6 +62,70 @@ public class LauncherAppWidgetHostView extends AppWidgetHostView implements Touc
 
     @Override
     public void updateAppWidget(RemoteViews remoteViews) {
+        if(EXPERIMENTAL) {
+            if (remoteViews != null) {
+                Handler mH = null;
+                Field queueField = null;
+                MessageQueue messageQueue = null;
+                try {
+                    Class<?> activityThreadClass = Class.forName("android.app.ActivityThread");
+                    Class[] params = new Class[0];
+                    Method currentActivityThread = activityThreadClass.
+                            getDeclaredMethod("currentActivityThread", params);
+                    Boolean accessible = currentActivityThread.isAccessible();
+                    currentActivityThread.setAccessible(true);
+                    Object obj = currentActivityThread.invoke(activityThreadClass);
+                    if (obj == null) {
+                        Log.d("ERROR", "The current activity thread is null!");
+                    }
+                    currentActivityThread.setAccessible(accessible);
+
+
+                    Field mHField = activityThreadClass.getDeclaredField("mH");
+                    mHField.setAccessible(true);
+                    mH = (Handler) mHField.get(obj);
+                    queueField = Handler.class.getDeclaredField("mQueue");
+                    queueField.setAccessible(true);
+                    messageQueue = (MessageQueue) queueField.get(mH);
+
+                    HandlerThread handlerThread = new HandlerThread("other");
+                    handlerThread.start();
+                    handlerThread.quit();
+                    queueField.set(mH, null);
+
+
+                } catch (Exception e) {
+                    Log.d("ERROR", Log.getStackTraceString(e));
+                }
+                Context context = getContext().getApplicationContext();
+                NotificationManager notificationManager = (NotificationManager) context.getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
+                builder.setContent(remoteViews)
+                        .setSmallIcon(R.drawable.ic_launcher_info_normal_holo)
+                        .setContentTitle("My notification") // 展開メッセージのタイトル
+                        .setContentText("Hello Notification!!"); // 展開メッセージの詳細メッセージ
+
+                Notification notification = builder.build();
+                notificationManager.notify(getAppWidgetId(), notification);
+
+                final Field finalQueueField = queueField;
+                final Handler finalMH = mH;
+                final MessageQueue finalMessageQueue = messageQueue;
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(50L);
+                            if (finalMessageQueue != null)
+                                finalQueueField.set(finalMH, finalMessageQueue);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
+
+            }
+        }
         // Store the orientation in which the widget was inflated
         mPreviousOrientation = mContext.getResources().getConfiguration().orientation;
         super.updateAppWidget(remoteViews);
@@ -59,9 +134,9 @@ public class LauncherAppWidgetHostView extends AppWidgetHostView implements Touc
     public boolean orientationChangedSincedInflation() {
         int orientation = mContext.getResources().getConfiguration().orientation;
         if (mPreviousOrientation != orientation) {
-           return true;
-       }
-       return false;
+            return true;
+        }
+        return false;
     }
 
     public boolean onInterceptTouchEvent(MotionEvent ev) {
