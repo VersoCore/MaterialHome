@@ -2666,7 +2666,8 @@ public class Launcher extends Activity
     }
 
     public boolean isAllAppsVisible() {
-        return (mState == State.APPS_CUSTOMIZE) || (mOnResumeState == State.APPS_CUSTOMIZE);
+        // All App is always visible!!!
+        return true;//(mState == State.APPS_CUSTOMIZE) || (mOnResumeState == State.APPS_CUSTOMIZE);
     }
 
     /**
@@ -2925,7 +2926,6 @@ public class Launcher extends Activity
      */
     private void hideAppsCustomizeHelper(Workspace.State toState, final boolean animated,
             final boolean springLoaded, final Runnable onCompleteRunnable) {
-
         if (mStateAnimation != null) {
             mStateAnimation.setDuration(0);
             mStateAnimation.cancel();
@@ -3099,7 +3099,7 @@ public class Launcher extends Activity
     void enterSpringLoadedDragMode() {
         if (isAllAppsVisible()) {
             hideAppsCustomizeHelper(Workspace.State.SPRING_LOADED, true, true, null);
-            mState = State.APPS_CUSTOMIZE_SPRING_LOADED;
+            //mState = State.APPS_CUSTOMIZE_SPRING_LOADED;
         }
     }
 

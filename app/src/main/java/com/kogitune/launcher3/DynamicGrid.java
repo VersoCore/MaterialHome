@@ -106,12 +106,12 @@ class DeviceProfile {
         name = n;
         minWidthDps = w;
         minHeightDps = h;
-        numRows = r;
+        numRows = 3;
         numColumns = c;
-        iconSize = is;
+        iconSize = 40;
         iconTextSize = its;
         numHotseatIcons = hs;
-        hotseatIconSize = his;
+        hotseatIconSize = 0;
     }
 
     DeviceProfile(Context context,
@@ -120,6 +120,7 @@ class DeviceProfile {
                   int wPx, int hPx,
                   int awPx, int ahPx,
                   Resources resources) {
+
         DisplayMetrics dm = resources.getDisplayMetrics();
         ArrayList<DeviceProfileQuery> points =
                 new ArrayList<DeviceProfileQuery>();
@@ -211,7 +212,8 @@ class DeviceProfile {
         */
 
         // Hotseat
-        hotseatBarHeightPx = iconSizePx + 4 * edgeMarginPx;
+        // not need hotseat
+        hotseatBarHeightPx = 0;
         hotseatCellWidthPx = iconSizePx;
         hotseatCellHeightPx = iconSizePx;
 
