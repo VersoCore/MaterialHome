@@ -16,7 +16,7 @@
 <com.kogitune.launcher3.AppsCustomizeTabHost
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:launcher="http://schemas.android.com/apk/res-auto/com.android.launcher3"
-    android:background="#80FFFFFF">
+    >
     <LinearLayout
         android:id="@+id/apps_customize_content"
         android:orientation="vertical"
@@ -25,12 +25,15 @@
         android:visibility="gone">
         <!-- The layout_width of the tab bar gets overriden to align the content
              with the text in the tabs in AppsCustomizeTabHost. -->
+        <!--
+        android:layout_marginTop="@dimen/apps_customize_tab_bar_margin_top"
+        -->
         <FrameLayout
             android:id="@+id/tabs_container"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/apps_customize_tab_bar_height"
-            android:layout_marginTop="@dimen/apps_customize_tab_bar_margin_top"
             android:layout_gravity="center_horizontal"
+            android:visibility="gone"
             >
             <com.kogitune.launcher3.FocusOnlyTabWidget
                 android:id="@android:id/tabs"
