@@ -31,8 +31,6 @@ import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 
-import com.kogitune.launcher3.util.DebugJudge;
-
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
