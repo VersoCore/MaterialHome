@@ -86,6 +86,7 @@
     <orderEntry type="library" exported="" name="protobuf-java-2.6.1" level="project" />
     <orderEntry type="library" exported="" name="hugo-annotations-1.1.0" level="project" />
     <orderEntry type="library" exported="" name="support-v4-21.0.0-rc1" level="project" />
+    <orderEntry type="library" exported="" name="sdk-3.1" level="project" />
     <orderEntry type="library" exported="" name="hugo-runtime-1.1.0" level="project" />
     <orderEntry type="library" exported="" name="aspectjrt-1.7.4" level="project" />
   </component>

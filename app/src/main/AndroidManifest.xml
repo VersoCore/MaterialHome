@@ -42,6 +42,7 @@
 		android:name="com.kogitune.launcher3.permission.RECEIVE_LAUNCH_BROADCASTS"
 		android:protectionLevel="signature" />
 
+    <uses-permission android:name="android.permission.READ_LOGS" />
 	<uses-permission android:name="android.permission.CALL_PHONE" />
 	<uses-permission android:name="android.permission.SET_WALLPAPER" />
 	<uses-permission android:name="android.permission.SET_WALLPAPER_HINTS" />

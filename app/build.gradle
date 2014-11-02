@@ -63,6 +63,7 @@ android{
 
 
 dependencies {
+    compile 'com.deploygate:sdk:3.1'
     compile 'com.google.protobuf:protobuf-java:+'
     compile 'com.squareup.retrofit:retrofit-converters:+'
 
