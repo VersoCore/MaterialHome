@@ -1,8 +1,13 @@
 language: android
 jdk: oraclejdk7
 
+env:
+    global:
+        - DEPLOYGATE_USER=takahirom
+        - secure: "P4cEo4FVq0ad5AE1f9pRooiK0epQsJpDk+r1mWTpS9kQrutVimpfxQGG2Rp5sPTzXWShDfHoM5qoMZv2eRZ8yDNajC5MKiYX+bmJykONPNZxyXjogKVJFtTIbiJ2OZNFIUyM20aFe2RrWAfq4w3Dj9/rFANtlzc2le03/Ea4tIo="
+
 android:
     components:
         - build-tools-21.0.2
         
-script: bash gradlew build
+script: bash gradlew uploadDeployGateDebug
