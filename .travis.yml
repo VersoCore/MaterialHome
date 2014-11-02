@@ -4,7 +4,7 @@ jdk: oraclejdk7
 env:
     global:
         - DEPLOYGATE_USER=takahirom
-        - secure: "P4cEo4FVq0ad5AE1f9pRooiK0epQsJpDk+r1mWTpS9kQrutVimpfxQGG2Rp5sPTzXWShDfHoM5qoMZv2eRZ8yDNajC5MKiYX+bmJykONPNZxyXjogKVJFtTIbiJ2OZNFIUyM20aFe2RrWAfq4w3Dj9/rFANtlzc2le03/Ea4tIo="
+        - secure: "R6swwzhT1KOTL9w063/t/klGpmO1eJC1w35M0Dzejuvl4FoD9ZioQAUMsLXDPoaXGmK6vF0UZifHujs/2fQ3EJC71vtn9ZLPNP8V9zOzkm7k4UJ4x7S9iKutrCbRCimssirGeENnZO3x6vyoe/NId8gZ8Ti04i4g5f082JTjmEI="
 
 android:
     components:
