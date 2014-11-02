@@ -231,35 +231,11 @@ public class IconCache {
             if (entry.title == null) {
                 entry.title = info.activityInfo.name;
             }
-            if(DebugJudge.isDebuggable(mContext,componentName.getPackageName())) {
-                entry.icon = toGrayscale(Utilities.createIconBitmap(
-                        getFullResIcon(info), mContext));
-            }else{
-                entry.icon = Utilities.createIconBitmap(
-                        getFullResIcon(info), mContext);
-            }
+            entry.icon = Utilities.createIconBitmap(
+                    getFullResIcon(info), mContext);
         }
         return entry;
     }
-
-    public Bitmap toGrayscale(Bitmap bmpOriginal)
-    {
-        int width, height;
-        height = bmpOriginal.getHeight();
-        width = bmpOriginal.getWidth();
-
-        Bitmap bmpGrayscale = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-        Canvas c = new Canvas(bmpGrayscale);
-        Paint paint = new Paint();
-        ColorMatrix cm = new ColorMatrix();
-        cm.setSaturation(0);
-        ColorMatrixColorFilter f = new ColorMatrixColorFilter(cm);
-        paint.setColorFilter(f);
-        c.drawBitmap(bmpOriginal, 0, 0, paint);
-        return bmpGrayscale;
-    }
-
-
 
     public HashMap<ComponentName,Bitmap> getAllIcons() {
         synchronized (mCache) {
