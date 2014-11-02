@@ -106,10 +106,10 @@ class DeviceProfile {
         name = n;
         minWidthDps = w;
         minHeightDps = h;
-        numRows = 3;
+        numRows = 2;
         numColumns = c;
         iconSize = 40;
-        iconTextSize = its;
+        iconTextSize = (float) ((float) its * 0.7);
         numHotseatIcons = hs;
         hotseatIconSize = 0;
     }
