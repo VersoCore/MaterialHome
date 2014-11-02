@@ -4,10 +4,10 @@ jdk: oraclejdk7
 env:
     global:
         - DEPLOYGATE_USER=takahirom
-        - secure: "R6swwzhT1KOTL9w063/t/klGpmO1eJC1w35M0Dzejuvl4FoD9ZioQAUMsLXDPoaXGmK6vF0UZifHujs/2fQ3EJC71vtn9ZLPNP8V9zOzkm7k4UJ4x7S9iKutrCbRCimssirGeENnZO3x6vyoe/NId8gZ8Ti04i4g5f082JTjmEI="
+        - secure: "fmKoI6l0FWMEH/5y003hCfhcwGVwwyfePZAUrZZgY7T1Ah5V+cl5TnKSmJwY/fNyA8y+QWJYsc/rRqViBrVsktIo7j0qIrYO20RFYyxcyWSMyUrbywSr1cNM0MJztYaX8JxaBj7H0KJ5h6Ti6IUtZ25hh4BH9JUyTwpt83hEzJM="
 
 android:
     components:
         - build-tools-21.0.2
         
-script: bash gradlew uploadDeployGateDebug  --info --debug 
+script: bash gradlew uploadDeployGateDebug
