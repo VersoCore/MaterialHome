@@ -2795,7 +2795,7 @@ public class Launcher extends Activity
 
         // Shrink workspaces away if going to AppsCustomize from workspace
         Animator workspaceAnim =
-                mWorkspace.getChangeStateAnimation(Workspace.State.SMALL, animated);
+                mWorkspace.getChangeStateAnimation(Workspace.State.OVERVIEW, animated);
         if (!AppsCustomizePagedView.DISABLE_ALL_APPS) {
             // Set the content type for the all apps space
             mAppsCustomizeTabHost.setContentTypeImmediate(contentType);
@@ -2926,90 +2926,91 @@ public class Launcher extends Activity
      */
     private void hideAppsCustomizeHelper(Workspace.State toState, final boolean animated,
             final boolean springLoaded, final Runnable onCompleteRunnable) {
-        if (mStateAnimation != null) {
-            mStateAnimation.setDuration(0);
-            mStateAnimation.cancel();
-            mStateAnimation = null;
-        }
-        Resources res = getResources();
-
-        final int duration = res.getInteger(R.integer.config_appsCustomizeZoomOutTime);
-        final int fadeOutDuration =
-                res.getInteger(R.integer.config_appsCustomizeFadeOutTime);
-        final float scaleFactor = (float)
-                res.getInteger(R.integer.config_appsCustomizeZoomScaleFactor);
-        final View fromView = mAppsCustomizeTabHost;
-        final View toView = mWorkspace;
-        Animator workspaceAnim = null;
-        if (toState == Workspace.State.NORMAL) {
-            int stagger = res.getInteger(R.integer.config_appsCustomizeWorkspaceAnimationStagger);
-            workspaceAnim = mWorkspace.getChangeStateAnimation(
-                    toState, animated, stagger, -1);
-        } else if (toState == Workspace.State.SPRING_LOADED ||
-                toState == Workspace.State.OVERVIEW) {
-            workspaceAnim = mWorkspace.getChangeStateAnimation(
-                    toState, animated);
-        }
-
-        setPivotsForZoom(fromView, scaleFactor);
-        showHotseat(animated);
-        if (animated) {
-            final LauncherViewPropertyAnimator scaleAnim =
-                    new LauncherViewPropertyAnimator(fromView);
-            scaleAnim.
-                scaleX(scaleFactor).scaleY(scaleFactor).
-                setDuration(duration).
-                setInterpolator(new Workspace.ZoomInInterpolator());
-
-            final ObjectAnimator alphaAnim = LauncherAnimUtils
-                .ofFloat(fromView, "alpha", 1f, 0f)
-                .setDuration(fadeOutDuration);
-            alphaAnim.setInterpolator(new AccelerateDecelerateInterpolator());
-            alphaAnim.addUpdateListener(new AnimatorUpdateListener() {
-                @Override
-                public void onAnimationUpdate(ValueAnimator animation) {
-                    float t = 1f - (Float) animation.getAnimatedValue();
-                    dispatchOnLauncherTransitionStep(fromView, t);
-                    dispatchOnLauncherTransitionStep(toView, t);
-                }
-            });
-
-            mStateAnimation = LauncherAnimUtils.createAnimatorSet();
-
-            dispatchOnLauncherTransitionPrepare(fromView, animated, true);
-            dispatchOnLauncherTransitionPrepare(toView, animated, true);
-            mAppsCustomizeContent.pauseScrolling();
-
-            mStateAnimation.addListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    fromView.setVisibility(View.GONE);
-                    dispatchOnLauncherTransitionEnd(fromView, animated, true);
-                    dispatchOnLauncherTransitionEnd(toView, animated, true);
-                    if (onCompleteRunnable != null) {
-                        onCompleteRunnable.run();
-                    }
-                    mAppsCustomizeContent.updateCurrentPageScroll();
-                    mAppsCustomizeContent.resumeScrolling();
-                }
-            });
-
-            mStateAnimation.playTogether(scaleAnim, alphaAnim);
-            if (workspaceAnim != null) {
-                mStateAnimation.play(workspaceAnim);
-            }
-            dispatchOnLauncherTransitionStart(fromView, animated, true);
-            dispatchOnLauncherTransitionStart(toView, animated, true);
-            LauncherAnimUtils.startAnimationAfterNextDraw(mStateAnimation, toView);
-        } else {
-            fromView.setVisibility(View.GONE);
-            dispatchOnLauncherTransitionPrepare(fromView, animated, true);
-            dispatchOnLauncherTransitionStart(fromView, animated, true);
-            dispatchOnLauncherTransitionEnd(fromView, animated, true);
-            dispatchOnLauncherTransitionPrepare(toView, animated, true);
-            dispatchOnLauncherTransitionStart(toView, animated, true);
-            dispatchOnLauncherTransitionEnd(toView, animated, true);
-        }
+        showAppsCustomizeHelper(animated, false, AppsCustomizePagedView.ContentType.Applications);
+//        if (mStateAnimation != null) {
+//            mStateAnimation.setDuration(0);
+//            mStateAnimation.cancel();
+//            mStateAnimation = null;
+//        }
+//        Resources res = getResources();
+//
+//        final int duration = res.getInteger(R.integer.config_appsCustomizeZoomOutTime);
+//        final int fadeOutDuration =
+//                res.getInteger(R.integer.config_appsCustomizeFadeOutTime);
+//        final float scaleFactor = (float)
+//                res.getInteger(R.integer.config_appsCustomizeZoomScaleFactor);
+//        final View fromView = mAppsCustomizeTabHost;
+//        final View toView = mWorkspace;
+//        Animator workspaceAnim = null;
+//        if (toState == Workspace.State.NORMAL) {
+//            int stagger = res.getInteger(R.integer.config_appsCustomizeWorkspaceAnimationStagger);
+//            workspaceAnim = mWorkspace.getChangeStateAnimation(
+//                    toState, animated, stagger, -1);
+//        } else if (toState == Workspace.State.SPRING_LOADED ||
+//                toState == Workspace.State.OVERVIEW) {
+//            workspaceAnim = mWorkspace.getChangeStateAnimation(
+//                    toState, animated);
+//        }
+//
+//        setPivotsForZoom(fromView, scaleFactor);
+//        showHotseat(animated);
+//        if (animated) {
+//            final LauncherViewPropertyAnimator scaleAnim =
+//                    new LauncherViewPropertyAnimator(fromView);
+//            scaleAnim.
+//                scaleX(scaleFactor).scaleY(scaleFactor).
+//                setDuration(duration).
+//                setInterpolator(new Workspace.ZoomInInterpolator());
+//
+//            final ObjectAnimator alphaAnim = LauncherAnimUtils
+//                .ofFloat(fromView, "alpha", 1f, 0f)
+//                .setDuration(fadeOutDuration);
+//            alphaAnim.setInterpolator(new AccelerateDecelerateInterpolator());
+//            alphaAnim.addUpdateListener(new AnimatorUpdateListener() {
+//                @Override
+//                public void onAnimationUpdate(ValueAnimator animation) {
+//                    float t = 1f - (Float) animation.getAnimatedValue();
+//                    dispatchOnLauncherTransitionStep(fromView, t);
+//                    dispatchOnLauncherTransitionStep(toView, t);
+//                }
+//            });
+//
+//            mStateAnimation = LauncherAnimUtils.createAnimatorSet();
+//
+//            dispatchOnLauncherTransitionPrepare(fromView, animated, true);
+//            dispatchOnLauncherTransitionPrepare(toView, animated, true);
+//            mAppsCustomizeContent.pauseScrolling();
+//
+//            mStateAnimation.addListener(new AnimatorListenerAdapter() {
+//                @Override
+//                public void onAnimationEnd(Animator animation) {
+//                    fromView.setVisibility(View.GONE);
+//                    dispatchOnLauncherTransitionEnd(fromView, animated, true);
+//                    dispatchOnLauncherTransitionEnd(toView, animated, true);
+//                    if (onCompleteRunnable != null) {
+//                        onCompleteRunnable.run();
+//                    }
+//                    mAppsCustomizeContent.updateCurrentPageScroll();
+//                    mAppsCustomizeContent.resumeScrolling();
+//                }
+//            });
+//
+//            mStateAnimation.playTogether(scaleAnim, alphaAnim);
+//            if (workspaceAnim != null) {
+//                mStateAnimation.play(workspaceAnim);
+//            }
+//            dispatchOnLauncherTransitionStart(fromView, animated, true);
+//            dispatchOnLauncherTransitionStart(toView, animated, true);
+//            LauncherAnimUtils.startAnimationAfterNextDraw(mStateAnimation, toView);
+//        } else {
+//            fromView.setVisibility(View.GONE);
+//            dispatchOnLauncherTransitionPrepare(fromView, animated, true);
+//            dispatchOnLauncherTransitionStart(fromView, animated, true);
+//            dispatchOnLauncherTransitionEnd(fromView, animated, true);
+//            dispatchOnLauncherTransitionPrepare(toView, animated, true);
+//            dispatchOnLauncherTransitionStart(toView, animated, true);
+//            dispatchOnLauncherTransitionEnd(toView, animated, true);
+//        }
     }
 
     @Override
