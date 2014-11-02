@@ -1060,7 +1060,7 @@ public class LauncherProvider extends ContentProvider {
                     // Assuming it's a <favorite> at this point
                     TypedArray a = mContext.obtainStyledAttributes(attrs, R.styleable.Favorite);
 
-                    long container = LauncherSettings.Favorites.CONTAINER_DESKTOP;
+                    long container = Favorites.CONTAINER_DESKTOP;
                     if (a.hasValue(R.styleable.Favorite_container)) {
                         container = Long.valueOf(a.getString(R.styleable.Favorite_container));
                     }
@@ -1070,13 +1070,13 @@ public class LauncherProvider extends ContentProvider {
                     String y = a.getString(R.styleable.Favorite_y);
 
                     values.clear();
-                    values.put(LauncherSettings.Favorites.CONTAINER, container);
-                    values.put(LauncherSettings.Favorites.SCREEN, screen);
-                    values.put(LauncherSettings.Favorites.CELLX, x);
-                    values.put(LauncherSettings.Favorites.CELLY, y);
+                    values.put(Favorites.CONTAINER, container);
+                    values.put(Favorites.SCREEN, screen);
+                    values.put(Favorites.CELLX, x);
+                    values.put(Favorites.CELLY, y);
 
                     if (LOGD) {
-                        final String title = a.getString(R.styleable.Favorite_title);
+                        final String title = a.getString(R.styleable.Favorite_title1);
                         final String pkg = a.getString(R.styleable.Favorite_packageName);
                         final String something = title != null ? title : pkg;
                         Log.v(TAG, String.format(
@@ -1100,13 +1100,13 @@ public class LauncherProvider extends ContentProvider {
                         added = id >= 0;
                     } else if (TAG_FOLDER.equals(name)) {
                         String title;
-                        int titleResId =  a.getResourceId(R.styleable.Favorite_title, -1);
+                        int titleResId =  a.getResourceId(R.styleable.Favorite_title1, -1);
                         if (titleResId != -1) {
                             title = mContext.getResources().getString(titleResId);
                         } else {
                             title = mContext.getResources().getString(R.string.folder_name);
                         }
-                        values.put(LauncherSettings.Favorites.TITLE, title);
+                        values.put(Favorites.TITLE, title);
                         long folderId = addFolder(db, values);
                         added = folderId >= 0;
 
@@ -1123,7 +1123,7 @@ public class LauncherProvider extends ContentProvider {
                             TypedArray ar = mContext.obtainStyledAttributes(attrs,
                                     R.styleable.Favorite);
                             values.clear();
-                            values.put(LauncherSettings.Favorites.CONTAINER, folderId);
+                            values.put(Favorites.CONTAINER, folderId);
 
                             if (LOGD) {
                                 final String pkg = ar.getString(R.styleable.Favorite_packageName);
@@ -1366,8 +1366,8 @@ public class LauncherProvider extends ContentProvider {
                 TypedArray a) {
             Resources r = mContext.getResources();
 
-            final int iconResId = a.getResourceId(R.styleable.Favorite_icon, 0);
-            final int titleResId = a.getResourceId(R.styleable.Favorite_title, 0);
+            final int iconResId = a.getResourceId(R.styleable.Favorite_icon1, 0);
+            final int titleResId = a.getResourceId(R.styleable.Favorite_title1, 0);
 
             Intent intent;
             String uri = null;
