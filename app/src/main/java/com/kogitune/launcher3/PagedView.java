@@ -1185,7 +1185,7 @@ public abstract class PagedView extends ViewGroup implements ViewGroup.OnHierarc
                     if (v == mDragView) continue;
                     if (mForceDrawAllChildrenNextFrame ||
                                (leftScreen <= i && i <= rightScreen && shouldDrawChild(v))) {
-                        v.setBackgroundColor(Color.argb(55,255,0,0));
+                        //v.setBackgroundColor(Color.argb(55,255,0,0));
                         drawChild(canvas, v, drawingTime);
                     }
                 }
