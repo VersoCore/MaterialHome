@@ -10,4 +10,4 @@ android:
     components:
         - build-tools-21.0.2
         
-script: bash gradlew uploadDeployGateDebug
+script: bash gradlew uploadDeployGateDebug  --info --debug 
