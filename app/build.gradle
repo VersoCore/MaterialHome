@@ -1,13 +1,14 @@
 buildscript {
     repositories {
         mavenCentral()
+        maven { url 'http://raw.github.com/takahirom/gradle-deploygate-plugin/master/repository/' }
     }
 
     dependencies {
         classpath 'com.android.tools.build:gradle:0.12.+'
         classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.12.+'
         classpath 'com.jakewharton.hugo:hugo-plugin:1.1.0'
-        classpath 'com.deploygate:gradle:0.6'
+        classpath 'com.kogitune:gradle-deploygate-plugin:1.0.0'
     }
 }
 apply plugin: 'android-sdk-manager'
