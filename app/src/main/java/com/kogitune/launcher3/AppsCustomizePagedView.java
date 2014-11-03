@@ -798,7 +798,7 @@ public class AppsCustomizePagedView extends PagedViewWithDraggableItems implemen
                     resetDrawableState();
 
                     // Go into spring loaded mode (must happen before we startDrag())
-                    mLauncher.enterSpringLoadedDragMode();
+                    //mLauncher.enterSpringLoadedDragMode();
                 }
             }
         }, 150);
