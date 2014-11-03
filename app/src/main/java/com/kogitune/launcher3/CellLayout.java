@@ -152,7 +152,7 @@ public class CellLayout extends CardView {
     public static final int MODE_ON_DROP_EXTERNAL = 2;
     public static final int MODE_ACCEPT_DROP = 3;
     private static final boolean DESTRUCTIVE_REORDER = false;
-    private static final boolean DEBUG_VISUALIZE_OCCUPIED = true;
+    private static final boolean DEBUG_VISUALIZE_OCCUPIED = false;
 
     static final int LANDSCAPE = 0;
     static final int PORTRAIT = 1;
