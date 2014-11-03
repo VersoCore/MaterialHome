@@ -36,6 +36,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Parcelable;
+import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.SparseArray;
@@ -56,7 +57,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Stack;
 
-public class CellLayout extends ViewGroup {
+public class CellLayout extends CardView {
     static final String TAG = "CellLayout";
 
     private Launcher mLauncher;
@@ -3114,7 +3115,7 @@ out:            for (int i = x; i < x + spanX - 1 && x < xCount; i++) {
     }
 
     @Override
-    public ViewGroup.LayoutParams generateLayoutParams(AttributeSet attrs) {
+    public CardView.LayoutParams generateLayoutParams(AttributeSet attrs) {
         return new CellLayout.LayoutParams(getContext(), attrs);
     }
 
@@ -3139,7 +3140,7 @@ out:            for (int i = x; i < x + spanX - 1 && x < xCount; i++) {
         }
     }
 
-    public static class LayoutParams extends ViewGroup.MarginLayoutParams {
+    public static class LayoutParams extends CardView.LayoutParams {
         /**
          * Horizontal location of the item in the grid.
          */

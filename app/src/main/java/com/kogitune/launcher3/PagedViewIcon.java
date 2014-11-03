@@ -105,10 +105,14 @@ public class PagedViewIcon extends TextView {
 
     @Override
     public void draw(Canvas canvas) {
+        super.draw(canvas);
         // If text is transparent, don't draw any shadow
         if (getCurrentTextColor() == getResources().getColor(android.R.color.transparent)) {
             getPaint().clearShadowLayer();
             super.draw(canvas);
+            return;
+        }
+        if(true){
             return;
         }
 

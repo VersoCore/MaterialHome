@@ -15,6 +15,7 @@
 -->
 <com.kogitune.launcher3.AppsCustomizeTabHost
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
     xmlns:launcher="http://schemas.android.com/apk/res-auto/com.android.launcher3"
     >
     <LinearLayout
@@ -60,6 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/apps_customize_page_indicator_offset"
+
                 launcher:widgetCountX="@integer/apps_customize_widget_cell_count_x"
                 launcher:widgetCountY="@integer/apps_customize_widget_cell_count_y"
                 launcher:clingFocusedX="@integer/apps_customize_cling_focused_x"
