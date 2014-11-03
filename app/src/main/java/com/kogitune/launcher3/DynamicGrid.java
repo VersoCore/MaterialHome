@@ -108,8 +108,8 @@ class DeviceProfile {
         minHeightDps = h;
         numRows = 2;
         numColumns = c;
-        iconSize = 40;
-        iconTextSize = (float) ((float) its * 0.7);
+        iconSize = 50;
+        iconTextSize = (float) ((float) its * 0.9);
         numHotseatIcons = hs;
         hotseatIconSize = 0;
     }
