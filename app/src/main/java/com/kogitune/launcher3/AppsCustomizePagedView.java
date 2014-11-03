@@ -996,7 +996,8 @@ public class AppsCustomizePagedView extends PagedViewWithDraggableItems implemen
         ((Activity)getContext()).getWindowManager().getDefaultDisplay().getMetrics(metrics);
         layout.setRadius(DynamicGrid.pxFromDp(8, metrics));
 
-        layout.setCardElevation(10);
+        // this travis cant build
+        //layout.setCardElevation(10);
         setVisibilityOnChildren(layout, View.VISIBLE);
     }
 
