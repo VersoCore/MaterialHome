@@ -2849,7 +2849,7 @@ public class Launcher extends Activity
                     dispatchOnLauncherTransitionEnd(toView, animated, false);
 
                     // Hide the search bar
-                    if (mSearchDropTargetBar != null) {
+                    if (mSearchDropTargetBar != null && mState != State.WORKSPACE) {
                         mSearchDropTargetBar.hideSearchBar(false);
                     }
                 }
