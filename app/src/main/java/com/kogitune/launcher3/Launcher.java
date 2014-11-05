@@ -97,6 +97,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kogitune.launcher3.DropTarget.DragObject;
+import com.melnykov.fab.FloatingActionButton;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -216,6 +217,7 @@ public class Launcher extends Activity
     private LayoutInflater mInflater;
 
     private Workspace mWorkspace;
+    private FloatingActionButton mFloatingActionButton;
     private View mLauncherView;
     private DragLayer mDragLayer;
     private DragController mDragController;
@@ -1137,6 +1139,13 @@ public class Launcher extends Activity
         mLauncherView = findViewById(R.id.launcher);
         mDragLayer = (DragLayer) findViewById(R.id.drag_layer);
         mWorkspace = (Workspace) mDragLayer.findViewById(R.id.workspace);
+        mFloatingActionButton = (FloatingActionButton)findViewById(R.id.floating_button);
+        mFloatingActionButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showOverviewMode(true);
+            }
+        });
 
         mLauncherView.setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
