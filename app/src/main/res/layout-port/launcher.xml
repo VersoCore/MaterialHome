@@ -56,10 +56,6 @@
                     android:layout_height="match_parent"
                     android:visibility="gone" />
 
-                <include
-                    android:id="@+id/overview_panel"
-                    layout="@layout/overview_panel"
-                    android:visibility="gone" />
 
                 <!-- Keep these behind the workspace so that they are not visible when
                      we go into AllApps -->
@@ -140,5 +136,10 @@
             android:layout_marginRight="24dp"
             android:layout_gravity="center_vertical|right"
             />
+        <include
+                    android:id="@+id/overview_panel"
+                    layout="@layout/overview_panel"
+                    android:visibility="gone" />
+
     </com.kogitune.launcher3.DragLayer>
 </FrameLayout>
