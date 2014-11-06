@@ -4101,7 +4101,8 @@ public class Workspace extends SmoothPagedView
 
     @Override
     public void scrollRight() {
-        if (!isSmall() && !mIsSwitchingState) {
+        // can scroll in small
+        if (/*!isSmall() && */!mIsSwitchingState) {
             super.scrollRight();
         }
         Folder openFolder = getOpenFolder();
