@@ -4123,7 +4123,8 @@ public class Workspace extends SmoothPagedView
         }
 
         boolean result = false;
-        if (!isSmall() && !mIsSwitchingState && getOpenFolder() == null) {
+        // can move in Small
+        if (/*!isSmall() && */!mIsSwitchingState && getOpenFolder() == null) {
             mInScrollArea = true;
 
             final int page = getNextPage() +
