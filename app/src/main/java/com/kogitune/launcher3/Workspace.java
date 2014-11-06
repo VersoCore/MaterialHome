@@ -69,6 +69,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 
+import hugo.weaving.DebugLog;
+
 /**
  * The workspace is a wide area with a wallpaper and a finite number of pages.
  * Each page contains a number of icons, folders or widgets the user can
@@ -4090,7 +4092,8 @@ public class Workspace extends SmoothPagedView
 
     @Override
     public void scrollLeft() {
-        if (!isSmall() && !mIsSwitchingState) {
+        // can scroll in small
+        if (/*!isSmall() && */!mIsSwitchingState) {
             super.scrollLeft();
         }
         Folder openFolder = getOpenFolder();
