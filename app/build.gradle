@@ -23,12 +23,12 @@ deploygate {
 
     apks {
         debug {
-            sourceFile = file("${project.buildDir}/outputs/apk/app-debug.apk")
+            sourceFile = file("${project.buildDir}/outputs/apk/app-xxhdpi-debug.apk")
         }
     }
 }
-
 uploadDeployGateDebug.dependsOn assembleDebug
+
 android{
     compileSdkVersion 21
     buildToolsVersion "20.0.0"
@@ -70,6 +70,9 @@ android{
         }
         xhdpi {
             resConfigs "xhdpi", "nodpi"
+        }
+        xxhdpi {
+            resConfigs "xxhdpi", "nodpi"
         }
     }
 }
