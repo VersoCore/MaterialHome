@@ -60,7 +60,18 @@ android{
             keyPassword "android"
         }
     }
-    
+
+    productFlavors {
+        mdpi {
+            resConfigs "mdpi", "nodpi"
+        }
+        hdpi {
+            resConfigs "hdpi", "nodpi"
+        }
+        xhdpi {
+            resConfigs "xhdpi", "nodpi"
+        }
+    }
 }
 
 
