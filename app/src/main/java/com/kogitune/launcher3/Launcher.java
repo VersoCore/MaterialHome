@@ -50,12 +50,14 @@ import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -84,6 +86,7 @@ import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
@@ -98,6 +101,7 @@ import android.widget.Toast;
 
 import com.kogitune.launcher3.DropTarget.DragObject;
 import com.melnykov.fab.FloatingActionButton;
+import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -427,6 +431,18 @@ public class Launcher extends Activity
 
         checkForLocaleChange();
         setContentView(R.layout.launcher);
+
+        // SystemBar
+        // create our manager instance after the content view is set
+        SystemBarTintManager tintManager = new SystemBarTintManager(this);
+        // enable status bar tint
+        tintManager.setStatusBarTintEnabled(true);
+        // enable navigation bar tint
+        tintManager.setNavigationBarTintEnabled(true);
+        // set a custom tint color for all system bars
+        tintManager.setTintColor(Color.parseColor("#11EEEEFF"));
+
+
 
         setupViews();
         grid.layout(this);
