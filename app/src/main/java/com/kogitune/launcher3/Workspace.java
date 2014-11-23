@@ -906,7 +906,7 @@ public class Workspace extends SmoothPagedView
     public boolean dispatchUnhandledMove(View focused, int direction) {
         if (isSmall() || !isFinishedSwitchingState()) {
             // when the home screens are shrunken, shouldn't allow side-scrolling
-            //return false;
+            return false;
         }
         return super.dispatchUnhandledMove(focused, direction);
     }
