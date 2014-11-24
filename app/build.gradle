@@ -9,7 +9,7 @@ buildscript {
         classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.12.+'
         classpath 'com.jakewharton.hugo:hugo-plugin:1.1.0'
         classpath 'com.kogitune:gradle-deploygate-plugin:1.0.0'
-
+        classpath files('buildSrc/libs/*.jar')
     }
 }
 apply plugin: 'android-sdk-manager'
