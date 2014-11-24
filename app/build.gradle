@@ -5,10 +5,11 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.12.+'
+        classpath 'com.android.tools.build:gradle:0.14.4'
         classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.12.+'
         classpath 'com.jakewharton.hugo:hugo-plugin:1.1.0'
         classpath 'com.kogitune:gradle-deploygate-plugin:1.0.0'
+
     }
 }
 apply plugin: 'android-sdk-manager'
@@ -48,7 +49,7 @@ android{
 
     buildTypes {
         release {
-            runProguard false
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }

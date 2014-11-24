@@ -12,8 +12,6 @@
     xmlns:tools="http://schemas.android.com/tools"
 	package="com.kogitune.launcher3">
 
-    <uses-sdk
-        tools:node="replace" />
 	<!--<uses-sdk android:minSdkVersion="17" android:targetSdkVersion="19"
 		android:maxSdkVersion="19" />
 		-->

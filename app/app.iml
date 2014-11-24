@@ -10,7 +10,7 @@
       <configuration>
         <option name="SELECTED_BUILD_VARIANT" value="hdpiDebug" />
         <option name="ASSEMBLE_TASK_NAME" value="assembleHdpiDebug" />
-        <option name="COMPILE_JAVA_TASK_NAME" value="compileHdpiDebugJava" />
+        <option name="COMPILE_JAVA_TASK_NAME" value="compileHdpiDebugSources" />
         <option name="ASSEMBLE_TEST_TASK_NAME" value="assembleHdpiDebugTest" />
         <option name="SOURCE_GEN_TASK_NAME" value="generateHdpiDebugSources" />
         <option name="TEST_SOURCE_GEN_TASK_NAME" value="generateHdpiDebugTestSources" />
@@ -32,6 +32,7 @@
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/hdpi/debug" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/hdpi/debug" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/hdpi/debug" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/generated/hdpi/debug" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/hdpiDebug/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/hdpiDebug/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/hdpiDebug/assets" type="java-resource" />
@@ -44,6 +45,7 @@
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/test/hdpi/debug" isTestSource="true" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/test/hdpi/debug" isTestSource="true" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/test/hdpi/debug" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/generated/test/hdpi/debug" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/hdpi/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/hdpi/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/hdpi/assets" type="java-resource" />
@@ -99,6 +101,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/rs" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/symbols" />
       <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
+      <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 21 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
