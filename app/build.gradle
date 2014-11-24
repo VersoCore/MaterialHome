@@ -76,7 +76,11 @@ android{
         }
     }
 }
-uploadDeployGateDebug.dependsOn assembleXxhdpiDebug
+//android.metaClass.methods.each{println it}
+project.afterEvaluate{
+    uploadDeployGateDebug.dependsOn assembleXxhdpiDebug
+}
+
 
 
 dependencies {
