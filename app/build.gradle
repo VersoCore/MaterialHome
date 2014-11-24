@@ -29,7 +29,6 @@ deploygate {
         }
     }
 }
-uploadDeployGateDebug.dependsOn assembleXxhdpiDebug
 
 android{
     compileSdkVersion 21
@@ -77,6 +76,7 @@ android{
         }
     }
 }
+uploadDeployGateDebug.dependsOn assembleXxhdpiDebug
 
 
 dependencies {
