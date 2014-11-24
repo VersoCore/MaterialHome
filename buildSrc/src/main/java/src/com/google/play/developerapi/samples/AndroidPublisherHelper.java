@@ -60,7 +60,7 @@ public class AndroidPublisherHelper {
     static final String MIME_TYPE_APK = "application/vnd.android.package-archive";
 
     /** Path to the private key file (only used for Service Account auth). */
-    private static final String SRC_RESOURCES_KEY_P12 = "src/resources/key.p12";
+    private static final String SRC_RESOURCES_KEY_P12 = "buildSrc/src/main/java/src/resources/key.p12";
 
     /**
      * Path to the client secrets file (only used for Installed Application

@@ -1,4 +1,4 @@
 
 dependencies {
-    compile files(fileTree('libs'))
+    compile fileTree('libs')
 }

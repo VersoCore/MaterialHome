@@ -73,7 +73,7 @@ android{
         }
         xxhdpi {
             // xml in drawable folder not added without "mdpi"
-            resConfigs "xxhdpi", "nodpi" , "mdpi"
+            resConfigs "xxhdpi", "nodpi", "mdpi"
         }
     }
 }
@@ -82,6 +82,10 @@ project.afterEvaluate{
     uploadDeployGateDebug.dependsOn assembleXxhdpiDebug
 }
 
+import com.google.play.developerapi.samples.*
+task uploadGooglePlay<<{
+    BasicUploadApk.main(null);
+}
 
 
 dependencies {
@@ -89,14 +93,12 @@ dependencies {
     compile 'com.google.protobuf:protobuf-java:+'
     compile 'com.squareup.retrofit:retrofit-converters:+'
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
-
     compile 'com.android.support:support-v4:21.+'
     compile 'com.android.support:cardview-v7:21.+'
     compile 'com.android.support:recyclerview-v7:+'
-    compile "com.android.support:appcompat-v7:21.0.+"
-    compile('com.melnykov:floatingactionbutton:1.0.6'){
+    compile 'com.android.support:appcompat-v7:21.0.+'
+    compile('com.melnykov:floatingactionbutton:1.0.6') {
         exclude module: 'recyclerview-v7'
     }
-
 }
 

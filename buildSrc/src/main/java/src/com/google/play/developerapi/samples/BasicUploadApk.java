@@ -72,9 +72,9 @@ public class BasicUploadApk {
             log.info(String.format("Created edit with id: %s", editId));
 
             // Upload new apk to developer console
-            final String apkPath = BasicUploadApk.class
-                    .getResource(ApplicationConfig.APK_FILE_PATH)
+            final String apkPath = new File("app/build/outputs/apk/app-xxhdpi-debug.apk")
                     .toURI().getPath();
+            System.out.println(apkPath);
             final AbstractInputStreamContent apkFile =
                     new FileContent(AndroidPublisherHelper.MIME_TYPE_APK, new File(apkPath));
             Upload uploadRequest = edits
@@ -103,7 +103,7 @@ public class BasicUploadApk {
             AppEdit appEdit = commitRequest.execute();
             log.info(String.format("App edit with id %s has been comitted", appEdit.getId()));
 
-        } catch (IOException | URISyntaxException | GeneralSecurityException ex) {
+        } catch (IOException | GeneralSecurityException ex) {
             log.error("Excpetion was thrown while uploading apk to alpha track", ex);
         }
     }

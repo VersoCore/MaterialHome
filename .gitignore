@@ -39,4 +39,5 @@ Thumbs.db
 build/
 
 #specific file
-buildSrc/src/main/java/src/resources/client_secrets.json
+client_secrets.json
+key.p12
