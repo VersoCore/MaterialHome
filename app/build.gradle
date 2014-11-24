@@ -72,11 +72,12 @@ android{
             resConfigs "xhdpi", "nodpi"
         }
         xxhdpi {
-            resConfigs "xxhdpi", "nodpi"
+            // xml in drawable folder not added without "mdpi"
+            resConfigs "xxhdpi", "nodpi" , "mdpi"
         }
     }
 }
-//android.metaClass.methods.each{println it}
+// android.metaClass.methods.each{println it}
 project.afterEvaluate{
     uploadDeployGateDebug.dependsOn assembleXxhdpiDebug
 }
