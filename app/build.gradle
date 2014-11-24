@@ -24,12 +24,12 @@ deploygate {
 
     apks {
         debug {
-            sourceFile = file("${project.buildDir}/outputs/apk/app-debug.apk")
-            //sourceFile = file("${project.buildDir}/outputs/apk/app-xxhdpi-debug.apk")
+            //sourceFile = file("${project.buildDir}/outputs/apk/app-debug.apk")
+            sourceFile = file("${project.buildDir}/outputs/apk/app-xxhdpi-debug.apk")
         }
     }
 }
-uploadDeployGateDebug.dependsOn assembleDebug
+uploadDeployGateDebug.dependsOn assembleXxhdpiDebug
 
 android{
     compileSdkVersion 21
@@ -62,7 +62,6 @@ android{
             keyPassword "android"
         }
     }
-    /*
     productFlavors {
         mdpi {
             resConfigs "mdpi", "nodpi"
@@ -77,7 +76,6 @@ android{
             resConfigs "xxhdpi", "nodpi"
         }
     }
-    */
 }
 
 
